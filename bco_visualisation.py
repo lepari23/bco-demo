@@ -116,9 +116,10 @@ def bee_colony_optimization(cities, distance_matrix, num_bees, num_iterations, s
                 plot_graph(cities, distance_matrix, best_route,
                            highlight_color='blue')  # Highlight best route
                 plt.title(
-                    f"Optimal Solution | Best Distance: {best_distance:.2f}")
+                    f"Optimal Solution | Shortest Distance: {best_distance:.2f}\nFound in {iteration} iterations")
                 plt.axis('off')  # Turn off axis keys for the final plot
-                break
+                plt.show()
+                return
 
             # Move bees visibly along the edges
             move_speed = 0.1  # Adjust this to control speed of traversal
@@ -140,8 +141,9 @@ def bee_colony_optimization(cities, distance_matrix, num_bees, num_iterations, s
                 plt.scatter(
                     bee_positions[i][0], bee_positions[i][1], c='#FFD700', marker='x', s=120)
 
+            # Display iteration info and best distance so far
             plt.title(
-                f"Iteration {iteration} | Best Distance: {best_distance:.2f}")
+                f"Iteration {iteration} | Shortest Distance: {best_distance:.2f}")
             plt.pause(0.5)  # Pause for a short moment to simulate frame timing
 
             iteration += 1
